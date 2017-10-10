@@ -48,7 +48,7 @@ cask 'visual-studio-code'
 tap 'caskroom/fonts'
 
 cask 'font-open-sans'
-cask 'roboto'
+cask 'font-roboto'
 cask 'font-source-code-pro'
 
 # Corporate
@@ -68,3 +68,4 @@ brew 'exiv2'
 brew 'mysql'
 brew 'libevent'
 brew 'imagemagick@6', link: true
+brew 'libcouchbase'
