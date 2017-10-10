@@ -13,17 +13,11 @@
 
 cask_args appdir: '/Applications'
 
+brew 'ack'
 brew 'bash-completion'
 brew 'cmake'
-brew 'fasd'
 brew 'git'
-brew 'go'
-brew 'graphviz'
-brew 'hugo'
-brew 'icu4c'
 brew 'memcached'
-brew 'ncdu'
-brew 'nmap'
 brew 'openssl'
 brew 'postgresql'
 brew 'redis'
@@ -41,18 +35,12 @@ tap 'caskroom/cask'
 cask '1password'
 cask 'alfred'
 cask 'atom'
-cask 'cheatsheet'
 cask 'coderunner'
+cask 'diffmerge'
 cask 'dropbox'
-cask 'github-desktop'
 cask 'google-chrome'
-cask 'mindnode-pro'
-cask 'psequel'
-cask 'sketch'
-cask 'textexpander'
-cask 'vmware-fusion'
-cask 'wireshark'
-cask 'xscope'
+cask 'sourcetree'
+cask 'visual-studio-code'
 
 # Font Casks
 # https://github.com/caskroom/homebrew-fonts
@@ -63,7 +51,20 @@ cask 'font-open-sans'
 cask 'roboto'
 cask 'font-source-code-pro'
 
-# Science Casks
-# https://github.com/Homebrew/homebrew-science
+# Corporate
 
-tap 'homebrew/science'
+cask 'squidman'
+
+# ruby-perftools profiler
+
+brew 'p7zip'
+brew 'graphviz'
+brew 'ghostscript'
+
+
+# Specific Application Development
+
+brew 'exiv2'
+brew 'mysql'
+brew 'libevent'
+brew 'imagemagick@6', link: true
