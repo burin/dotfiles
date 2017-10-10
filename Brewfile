@@ -69,3 +69,17 @@ brew 'mysql'
 brew 'libevent'
 brew 'imagemagick@6', link: true
 brew 'libcouchbase'
+brew 'nvm'
+
+# React Native Development
+
+brew 'watchman'
+
+# Android Development
+cask 'caskroom/versions/java8'
+brew 'ant'
+brew 'maven'
+brew 'gradle'
+cask 'android-sdk'
+cask 'android-ndk'
+cask 'intel-haxm'
