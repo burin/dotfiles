@@ -147,6 +147,10 @@ defaults write com.apple.dock autohide-delay -float 0
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
+
+# Use dark menu bar and dock
+defaults write NSGlobalDomain AppleInterfaceStyle Dark
+
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
