@@ -83,3 +83,6 @@ brew 'gradle'
 cask 'android-sdk'
 cask 'android-ndk'
 cask 'intel-haxm'
+
+# iOS Development
+mas 'Xcode', id: 497799835
