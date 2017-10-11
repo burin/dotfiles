@@ -5,9 +5,11 @@ export PATH=/usr/local/sbin:$PATH
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # for node
+
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+HOMEBREW_NVM=$(brew --prefix nvm) # use homebrew nvm path instead of the usual .nvm path for scripts, keep $NVM_DIR for node installs
+[ -s "$HOMEBREW_NVM/nvm.sh" ] && \. "$HOMEBREW_NVM/nvm.sh"  # This loads nvm
+[ -s "$HOMEBREW_NVM/bash_completion" ] && \. "$HOMEBREW_NVM/bash_completion"  # This loads nvm bash_completion
 
 # for ruby
 export RBENV="$HOME/.rbenv/bin"
