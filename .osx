@@ -173,6 +173,10 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
+# set option as meta key
+/usr/libexec/PlistBuddy -c "add :Window\ Settings:Basic:useOptionAsMetaKey bool" ~/Library/Preferences/com.apple.Terminal.plist || true
+/usr/libexec/PlistBuddy -c "set :Window\ Settings:Basic:useOptionAsMetaKey true" ~/Library/Preferences/com.apple.Terminal.plist || true
+
 ###############################################################################
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
 ###############################################################################
