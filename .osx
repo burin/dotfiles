@@ -40,6 +40,12 @@ sudo systemsetup -setcomputersleep Off > /dev/null
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Disable automatic capitalization
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
