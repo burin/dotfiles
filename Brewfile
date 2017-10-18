@@ -40,6 +40,8 @@ cask 'diffmerge'
 cask 'docker'
 cask 'dropbox'
 cask 'google-chrome'
+cask 'macdown'
+cask 'slack'
 cask 'sourcetree'
 cask 'visual-studio-code'
 
