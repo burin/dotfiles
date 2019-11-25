@@ -34,15 +34,14 @@ tap 'caskroom/cask'
 
 cask '1password'
 cask 'alfred'
-cask 'atom'
 cask 'coderunner'
 cask 'diffmerge'
 cask 'docker'
 cask 'dropbox'
 cask 'google-chrome'
-cask 'macdown'
 cask 'slack'
 cask 'sourcetree'
+cask 'typora'
 cask 'visual-studio-code'
 
 # Font Casks
@@ -56,8 +55,6 @@ cask 'font-source-code-pro'
 
 # Corporate
 
-cask 'squidman'
-
 # ruby-perftools profiler
 
 brew 'p7zip'
@@ -67,25 +64,24 @@ brew 'ghostscript'
 
 # Specific Application Development
 
-brew 'exiv2'
-brew 'mysql'
-brew 'libevent'
-brew 'imagemagick@6', link: true
-brew 'libcouchbase'
+#brew 'exiv2'
+#brew 'mysql'
+#brew 'libevent'
+#brew 'libcouchbase'
 brew 'nvm'
 
 # React Native Development
 
-brew 'watchman'
+#brew 'watchman'
 
 # Android Development
-cask 'caskroom/versions/java8'
-brew 'ant'
-brew 'maven'
-brew 'gradle'
-cask 'android-sdk'
-cask 'android-ndk'
-cask 'intel-haxm'
+#cask 'caskroom/versions/java8'
+#brew 'ant'
+#brew 'maven'
+#brew 'gradle'
+#cask 'android-sdk'
+#cask 'android-ndk'
+#cask 'intel-haxm'
 
 # iOS Development
-mas 'Xcode', id: 497799835
+#mas 'Xcode', id: 497799835
