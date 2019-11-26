@@ -4,40 +4,38 @@ export EDITOR=bbedit
 export PATH=/usr/local/sbin:$PATH
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-# for fasd
-eval "$(fasd --init auto)"
-
 # for node
+
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+HOMEBREW_NVM=$(brew --prefix nvm) # use homebrew nvm path instead of the usual .nvm path for scripts, keep $NVM_DIR for node installs
+[ -s "$HOMEBREW_NVM/nvm.sh" ] && \. "$HOMEBREW_NVM/nvm.sh"  # This loads nvm
+[ -s "$HOMEBREW_NVM/bash_completion" ] && \. "$HOMEBREW_NVM/bash_completion"  # This loads nvm bash_completion
 
 # for ruby
 export RBENV="$HOME/.rbenv/bin"
 eval "$(rbenv init -)"
 export PATH=$RBENV:$PATH
 
-# for python
-export PYENV="$HOME/.pyenv/bin"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PATH=$PYENV:$PATH
-
-# for anaconda
-export PATH="/Users/sean/anaconda/bin:$PATH"
-
-# for go
-mkdir -p $HOME/go/bin
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-
-# for hbase
-export HBASE_HOME=/usr/local/Cellar/hbase/1.2.6/libexec
-export PATH=$HBASE_HOME:$PATH
-
 # for dotfiles
 export PATH=~/bin:$PATH
 
 PS1="\n\u:\w \$(vcprompt) \n→ "
+
+# android development
+
+export ANT_HOME=/usr/local/opt/ant
+export MAVEN_HOME=/usr/local/opt/maven
+export GRADLE_HOME=/usr/local/opt/gradle
+export ANDROID_HOME=/usr/local/share/android-sdk
+export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+export ANDROID_NDK_HOME=/usr/local/share/android-ndk
+
+export PATH=$ANT_HOME/bin:$PATH
+export PATH=$MAVEN_HOME/bin:$PATH
+export PATH=$GRADLE_HOME/bin:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/build-tools/19.1.0:$PATH
+export PATH=$PATH:$ANDROID_NDK_HOME
 
 # echo "Hostname: $HOSTNAME"

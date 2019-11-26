@@ -13,17 +13,11 @@
 
 cask_args appdir: '/Applications'
 
+brew 'ack'
 brew 'bash-completion'
 brew 'cmake'
-brew 'fasd'
 brew 'git'
-brew 'go'
-brew 'graphviz'
-brew 'hugo'
-brew 'icu4c'
 brew 'memcached'
-brew 'ncdu'
-brew 'nmap'
 brew 'openssl'
 brew 'postgresql'
 brew 'redis'
@@ -36,34 +30,64 @@ brew 'wget'
 # Homebrew Cask
 # http://caskroom.io
 
-tap 'caskroom/cask'
 
-cask '1password'
+cask 'aerial'
 cask 'alfred'
-cask 'atom'
-cask 'cheatsheet'
 cask 'coderunner'
+cask 'diffmerge'
+cask 'docker'
 cask 'dropbox'
-cask 'github-desktop'
 cask 'google-chrome'
-cask 'mindnode-pro'
-cask 'psequel'
-cask 'sketch'
-cask 'textexpander'
-cask 'vmware-fusion'
-cask 'wireshark'
-cask 'xscope'
+cask 'microsoft-office'
+cask 'slack'
+cask 'sourcetree'
+cask 'typora'
+cask 'visual-studio-code'
+
+tap 'homebrew/cask-versions'
+
+cask '1password6'
 
 # Font Casks
 # https://github.com/caskroom/homebrew-fonts
 
-tap 'caskroom/fonts'
+#tap 'caskroom/fonts'
 
-cask 'font-open-sans'
-cask 'roboto'
-cask 'font-source-code-pro'
+#cask 'font-open-sans'
+#cask 'font-roboto'
+#cask 'font-source-code-pro'
 
-# Science Casks
-# https://github.com/Homebrew/homebrew-science
+# Corporate
 
-tap 'homebrew/science'
+cask 'skype-for-business'
+
+# ruby-perftools profiler
+
+brew 'p7zip'
+brew 'graphviz'
+brew 'ghostscript'
+
+
+# Specific Application Development
+
+#brew 'exiv2'
+#brew 'mysql'
+#brew 'libevent'
+#brew 'libcouchbase'
+brew 'nvm'
+
+# React Native Development
+
+#brew 'watchman'
+
+# Android Development
+#cask 'caskroom/versions/java8'
+#brew 'ant'
+#brew 'maven'
+#brew 'gradle'
+#cask 'android-sdk'
+#cask 'android-ndk'
+#cask 'intel-haxm'
+
+# iOS Development
+#mas 'Xcode', id: 497799835

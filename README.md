@@ -17,9 +17,9 @@ Make sure it’s working:
 From the command-line, clone this project:
 
     mkdir -p ~/Projects
-    git clone https://github.com/moubry/dotfiles.git ~/Projects/dotfiles
+    git clone https://github.com/burin/dotfiles.git ~/Projects/dotfiles
 
-Install system dependencies defined in the [Brewfile](https://github.com/moubry/dotfiles/blob/master/Brewfile):
+Install system dependencies defined in the [Brewfile](https://github.com/burin/dotfiles/blob/master/Brewfile):
 
     cd ~/Projects/dotfiles
     brew bundle
@@ -34,7 +34,7 @@ Check out the new apps you have installed:
 
     find ~/Applications -cmin -60
 
-Try [one of the cool aliases](https://github.com/moubry/dotfiles/blob/master/dotfiles/bash/updaters):
+Try [one of the cool aliases](https://github.com/burin/dotfiles/blob/master/dotfiles/bash/updaters):
 
     update
 
