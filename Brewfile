@@ -30,30 +30,36 @@ brew 'wget'
 # Homebrew Cask
 # http://caskroom.io
 
-tap 'caskroom/cask'
 
-cask '1password'
+cask 'aerial'
 cask 'alfred'
 cask 'coderunner'
 cask 'diffmerge'
 cask 'docker'
 cask 'dropbox'
 cask 'google-chrome'
+cask 'microsoft-office'
 cask 'slack'
 cask 'sourcetree'
 cask 'typora'
 cask 'visual-studio-code'
 
+tap 'homebrew/cask-versions'
+
+cask '1password6'
+
 # Font Casks
 # https://github.com/caskroom/homebrew-fonts
 
-tap 'caskroom/fonts'
+#tap 'caskroom/fonts'
 
-cask 'font-open-sans'
-cask 'font-roboto'
-cask 'font-source-code-pro'
+#cask 'font-open-sans'
+#cask 'font-roboto'
+#cask 'font-source-code-pro'
 
 # Corporate
+
+cask 'skype-for-business'
 
 # ruby-perftools profiler
 
