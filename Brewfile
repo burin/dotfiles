@@ -19,10 +19,10 @@ brew 'cmake'
 brew 'git'
 brew 'memcached'
 brew 'openssl'
-brew 'postgresql'
-brew 'redis'
-brew 'rbenv'
-brew 'ruby-build'
+# brew 'postgresql'
+# brew 'redis'
+# brew 'rbenv'
+# brew 'ruby-build'
 brew 'ssh-copy-id'
 brew 'tree'
 brew 'wget'
@@ -41,10 +41,14 @@ cask 'dropbox'
 cask 'google-chrome'
 cask 'microsoft-office'
 cask 'omnidisksweeper'
+cask 'obsidian'
 cask 'qlmarkdown'
 cask 'rectangle'
+cask 'sequel-pro'
 cask 'slack'
 cask 'sourcetree'
+cask 'soulver'
+cask 'tweetbot'
 cask 'typora'
 cask 'visual-studio-code'
 
@@ -62,7 +66,7 @@ cask '1password6'
 
 # Corporate
 
-cask 'skype-for-business'
+# cask 'skype-for-business'
 
 # ruby-perftools profiler
 

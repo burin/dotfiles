@@ -2,6 +2,14 @@
 
 There are many like it, but this one is mine.
 
+
+## New Machine Prep
+
+Add Apple ID to machine
+
+Settings -> Sharing -> Computer Name
+
+
 ## Usage
 
 Install Homebrew:
