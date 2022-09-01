@@ -7,7 +7,6 @@ function update() {
   update_nvm
   update_npm
   update_gems
-  rbenv rehash
 
   printf '\nFinished updating.\n'
   printf 'Remember to scan the install logs ^^^ for warnings and post-update instructions.\n'
@@ -42,18 +41,4 @@ function update_npm() {
 
   echo 'Updating all globally installed packages'
   npm update -g
-}
-
-function update_gems() {
-  GEM_LOCATION=$(which gem)
-  if [ GEM_LOCATION == '/usr/bin/gem' ]
-    then
-      echo 'You’re using system Ruby — skipping update of RubyGems.'
-    else
-      echo 'Updating gem — the RubyGems program'
-      gem update --system
-
-      echo 'Updating all gems'
-      gem update
-  fi
 }

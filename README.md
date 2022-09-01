@@ -32,9 +32,15 @@ Install system dependencies defined in the [Brewfile](https://github.com/burin/d
     cd ~/Projects/dotfiles
     brew bundle
 
+Switch to bash: 
+
+    chsh -s /bin/bash
+
 Setup the dotfiles:
 
     ~/Projects/dotfiles/bootstrap.sh
+
+Open a new Terminal
 
 ##### You’re done!
 
