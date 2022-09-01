@@ -19,10 +19,6 @@ brew 'cmake'
 brew 'git'
 brew 'memcached'
 brew 'openssl'
-# brew 'postgresql'
-# brew 'redis'
-# brew 'rbenv'
-# brew 'ruby-build'
 brew 'ssh-copy-id'
 brew 'tree'
 brew 'wget'
@@ -67,6 +63,7 @@ cask '1password6'
 # Corporate
 
 # cask 'skype-for-business'
+cask 'microsoft-teams'
 
 # ruby-perftools profiler
 
@@ -77,14 +74,8 @@ brew 'ghostscript'
 
 # Specific Application Development
 
-#brew 'exiv2'
-#brew 'mysql'
-#brew 'libevent'
-#brew 'libcouchbase'
 #brew 'nvm' # install directly instead
 
-cask 'adoptopenjdk8'
-brew 'mysql@5.7'
 
 #Load and start the MySQL service : $ brew services start mysql@5.7
 #Expected output : Successfully started mysql (label: homebrew.mxcl.mysql)
