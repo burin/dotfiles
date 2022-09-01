@@ -30,22 +30,25 @@ brew 'wget'
 # Homebrew Cask
 # http://caskroom.io
 
-
+cask 'abstract'
 cask 'aerial'
 cask 'alfred'
+cask 'charles'
 cask 'coderunner'
 cask 'diffmerge'
 cask 'docker'
 cask 'dropbox'
 cask 'google-chrome'
 cask 'microsoft-office'
+cask 'omnidisksweeper'
+cask 'qlmarkdown'
+cask 'rectangle'
 cask 'slack'
 cask 'sourcetree'
 cask 'typora'
 cask 'visual-studio-code'
 
 tap 'homebrew/cask-versions'
-
 cask '1password6'
 
 # Font Casks
@@ -74,7 +77,24 @@ brew 'ghostscript'
 #brew 'mysql'
 #brew 'libevent'
 #brew 'libcouchbase'
-brew 'nvm'
+#brew 'nvm' # install directly instead
+
+cask 'adoptopenjdk8'
+brew 'mysql@5.7'
+
+#Load and start the MySQL service : $ brew services start mysql@5.7
+#Expected output : Successfully started mysql (label: homebrew.mxcl.mysql)
+#
+#Check of the MySQL service has been loaded : $ brew services list
+#
+#Force link 5.7 version - $ brew link mysql@5.7 --force
+#
+#Verify the installed MySQL instance : $ mysql -V
+#Expected output : Ver 14.14 Distrib 5.7.22, for osx10.13 (x86_64)
+
+# Services
+tap 'homebrew/services'
+
 
 # React Native Development
 
@@ -91,3 +111,6 @@ brew 'nvm'
 
 # iOS Development
 #mas 'Xcode', id: 497799835
+
+# non brew checklist
+#https://github.com/skleinei/alfred-confluence
