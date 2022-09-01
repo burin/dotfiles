@@ -46,13 +46,13 @@ Try [one of the cool aliases](https://github.com/burin/dotfiles/blob/master/dotf
 
     update
 
-## Configuring OS X
+## Configuring Mac OS
 
 This command will close a bunch of your apps, including Terminal. So do this at the end:
 
-    . ~/Projects/dotfiles/.osx
+    . ~/Projects/dotfiles/.macos
 
-Other things to remember that the `.osx` script doesn't handle for you:
+Other things to remember that the `.macos` script doesn't handle for you:
 
 * Terminal > Preferences > Profiles > Keyboard > Use Option as Meta key
 * Keychain Access > Preferences > Show keychain status in menu bar
