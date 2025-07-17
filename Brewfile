@@ -22,6 +22,8 @@ brew 'openssl'
 brew 'ssh-copy-id'
 brew 'tree'
 brew 'wget'
+brew 'tmux'
+brew 'neovim'
 
 # Homebrew Cask
 # http://caskroom.io

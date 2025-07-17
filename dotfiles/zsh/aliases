@@ -5,6 +5,11 @@ alias ..="cd .."
 alias la="ls -Glah"
 alias lsd='ls -l | grep "^d"'
 
+# Neovim
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+
 # History
 alias h=history
 
