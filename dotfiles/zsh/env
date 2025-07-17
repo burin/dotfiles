@@ -1,4 +1,4 @@
-export EDITOR=bbedit
+export EDITOR=vim
 
 # for homebrew
 export PATH=/opt/homebrew/bin:$PATH
@@ -17,8 +17,6 @@ export PATH=$HOME/bin:$PATH
 
 # for local binaries
 export PATH=$HOME/.local/bin:$PATH
-
-PS1="\n\u:\w \$(vcprompt) \n→ "
 
 # android development (commented out - paths don't exist)
 # export ANT_HOME=/usr/local/opt/ant
@@ -40,3 +38,10 @@ PS1="\n\u:\w \$(vcprompt) \n→ "
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export NX_TASKS_RUNNER_DYNAMIC_OUTPUT=false
+
+# for pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv >/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi

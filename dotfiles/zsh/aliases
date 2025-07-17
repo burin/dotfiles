@@ -1,0 +1,149 @@
+# Easier navigation
+alias ..="cd .."
+
+# Directory listing
+alias la="ls -Glah"
+alias lsd='ls -l | grep "^d"'
+
+# History
+alias h=history
+
+# Git
+alias ungit="find . -name '.git' -exec rm -rf {} \;"
+alias gb='git branch'
+alias gba='git branch -a'
+alias gc='git commit -v'
+alias gca='git commit -v -a'
+# Commit pending changes and quote all args as message
+function gg() {
+    git commit -v -a -m "$*"
+}
+alias gco='git checkout'
+alias gd='git diff'
+alias gdm='git diff master'
+alias gl='git pull'
+alias gnp="git-notpushed"
+alias gp='git push'
+alias gpom='git push -u origin master'
+alias gr='git remote -v'
+alias gst='git status'
+alias gt='git status'
+alias g='git status'
+
+# Git clone from GitHub
+function gch() {
+  git clone git://github.com/$USER/$1.git
+}
+
+# Search Git commit diffs across all branches
+function gs() {
+  git log --branches -S $1
+}
+
+# Setup a tracking branch from [remote] [branch_name]
+function gbt() {
+  git branch --track $2 $1/$2 && git checkout $2
+}
+# Quickly clobber a file and checkout
+function grf() {
+  rm $1
+  git checkout $1
+}
+# Call from inside an initialized Git repo, with the name of the repo.
+function new-git() {
+  ssh git@example.com "mkdir $1.git && cd $1.git && git --bare init"
+  git remote add origin git@example.com:$1.git
+  git push origin master
+  git config branch.master.remote origin
+  git config branch.master.merge refs/heads/master
+  git config push.default current
+}
+
+# GTFO of whatever you're on
+function eject() {
+  git clean -df
+  git checkout -- .
+  git fetch -ap
+  git checkout master
+  git reset --hard origin/master
+}
+
+# recursively find file or directory
+function search() {
+  find . | grep -i $1
+}
+
+# Performance
+alias tu='top -o cpu' # cpu
+alias tm='top -o vsize' # memory
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+alias whois="whois -h whois-servers.net"
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# Fancy cURL that shows detailed timing information
+# Source: https://josephscott.org/archives/2011/10/timing-details-with-curl/
+# Usage:
+#     $ curltime "http://moubry.com"
+function curltime() {
+  curl -w "@/Users/burin/Projects/dotfiles/curl-format" -o /dev/null -s "$1"
+}
+
+# Memcached
+alias memdump="memcached-tool localhost:11211 dump"
+
+# Tail logs
+alias accesslog="tail /var/log/apache2/access_log"
+alias errorlog="tail /var/log/apache2/error_log"
+
+# Empty the trash
+alias emptytrash="rm -rfv ~/.Trash"
+
+# Launch iPhone Simulator
+alias iphone='/usr/bin/open "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"'
+
+# Open secret environment variables file for editing
+alias secrets='/usr/bin/open "/Users/burin/Projects/dotfiles/dotfiles/zsh/secrets"'
+
+# Opens a man (manual page) in Preview (like a PDF)
+#   Written by https://github.com/tamalw
+function pman {
+  man -t "${1}" | open -f -a /Applications/Preview.app/
+}
+
+# Output the directories in the path on new lines
+alias path='echo $PATH | tr ":" "\n"'
+
+# Override python3 -m http.server to use proper development server
+function python3() {
+    if [[ "$1" == "-m" && "$2" == "http.server" ]]; then
+        # Extract port if provided, default to 3000
+        local port=3000
+        if [[ "$3" =~ ^[0-9]+$ ]]; then
+            port=$3
+        fi
+        
+        echo "❌ Python HTTP server not allowed! Using proper development server instead..."
+        echo "🔧 Starting npx http-server with no-cache settings..."
+        
+        # Check if npx is available
+        if ! command -v npx &> /dev/null; then
+            echo "❌ npx not found! Please install Node.js"
+            return 1
+        fi
+        
+        # Start proper development server with aggressive no-cache settings
+        echo "✅ Starting http-server on port $port with cache disabled..."
+        npx http-server -p $port --no-cache -c-1 --cors '*'
+        
+    else
+        # Call the real python3 for other commands
+        command python3 "$@"
+    fi
+}

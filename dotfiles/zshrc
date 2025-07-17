@@ -1,0 +1,6 @@
+. ~/bin/dotfiles/zsh/env
+. ~/bin/dotfiles/zsh/config
+. ~/bin/dotfiles/zsh/aliases
+. ~/bin/dotfiles/zsh/updaters
+. ~/bin/dotfiles/zsh/prompt
+[ -f ~/bin/dotfiles/zsh/secrets ] && . ~/bin/dotfiles/zsh/secrets

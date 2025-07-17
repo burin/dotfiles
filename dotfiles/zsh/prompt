@@ -1,0 +1,89 @@
+# zsh_prompt
+
+# Based on @gf3's Sexy Bash Prompt: https://github.com/gf3/dotfiles
+# Adapted for zsh
+# iTerm2 prefs: import Solarized theme (disable bright colors for bold text)
+# Color ref: http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
+# More tips: http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
+
+# Example:
+# nicolas@host: ~/.dotfiles on master[!?]
+# $
+
+# Check that terminfo exists before changing TERM var to xterm-256color
+# Prevents prompt flashing in Mac OS X 10.6 Terminal.app
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+fi
+
+# Enable colors
+autoload -U colors && colors
+
+# Base styles and color palette
+# Solarized colors
+# https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
+BOLD="%{$fg_bold[white]%}"
+RESET="%{$reset_color%}"
+SOLAR_YELLOW="%{$fg[yellow]%}"
+SOLAR_ORANGE="%{$fg[red]%}"
+SOLAR_RED="%{$fg_bold[red]%}"
+SOLAR_MAGENTA="%{$fg[magenta]%}"
+SOLAR_VIOLET="%{$fg[blue]%}"
+SOLAR_BLUE="%{$fg_bold[blue]%}"
+SOLAR_CYAN="%{$fg[cyan]%}"
+SOLAR_GREEN="%{$fg[green]%}"
+SOLAR_WHITE="%{$fg[white]%}"
+
+style_user="$RESET$SOLAR_ORANGE"
+style_host="$RESET$SOLAR_YELLOW"
+style_path="$RESET$SOLAR_GREEN"
+style_branch="$RESET$SOLAR_CYAN"
+style_chars="$RESET$SOLAR_WHITE"
+
+if [[ "$SSH_TTY" ]]; then
+    # connected via ssh
+    style_host="$BOLD$SOLAR_RED"
+elif [[ "$USER" == "root" ]]; then
+    # logged in as root
+    style_user="$BOLD$SOLAR_RED"
+fi
+
+# Git status using vcs_info
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats '%b'
+zstyle ':vcs_info:*' enable git
+
+# Git status function
+function prompt_git() {
+    local branch
+    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    [[ $? != 0 ]] && return;
+    
+    local status flags output
+    status="$(git status --porcelain 2>/dev/null)"
+    
+    flags=""
+    if [[ -n "$(echo "$status" | grep '^[MADRC]')" ]]; then
+        flags+="+"
+    fi
+    if [[ -n "$(echo "$status" | grep '^.[MD]')" ]]; then
+        flags+="!"
+    fi
+    if [[ -n "$(echo "$status" | grep '^??')" ]]; then
+        flags+="?"
+    fi
+    
+    output="$branch"
+    if [[ -n "$flags" ]]; then
+        output="$output[$flags]"
+    fi
+    echo "$style_chars on $style_branch$output"
+}
+
+# Build the prompt
+PROMPT='
+$style_user%n$style_chars@$style_host%m$style_chars: $style_path%~$(prompt_git)
+$style_chars$ $RESET'

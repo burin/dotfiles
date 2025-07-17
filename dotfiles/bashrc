@@ -3,4 +3,4 @@
 . ~/bin/dotfiles/bash/aliases
 . ~/bin/dotfiles/bash/updaters
 . ~/bin/dotfiles/bash/prompt
-. ~/bin/dotfiles/bash/secrets
+[ -f ~/bin/dotfiles/bash/secrets ] && . ~/bin/dotfiles/bash/secrets

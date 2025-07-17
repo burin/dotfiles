@@ -2,6 +2,15 @@
 
 There are many like it, but this one is mine.
 
+## Structure
+
+This dotfiles setup uses a symlink approach:
+- `~/bin` is symlinked to `~/Projects/dotfiles`
+- Shell configs are in `~/Projects/dotfiles/dotfiles/`
+- For zsh: `~/bin/dotfiles/zshrc` (not `~/.zshrc`)
+- For bash: `~/bin/dotfiles/bashrc` (not `~/.bashrc`)
+- Environment variables, aliases, etc. are split into separate files under `zsh/` or `bash/`
+
 
 ## New Machine Prep
 
@@ -32,13 +41,17 @@ Install system dependencies defined in the [Brewfile](https://github.com/burin/d
     cd ~/Projects/dotfiles
     brew bundle
 
-Switch to bash: 
-
-    chsh -s /bin/bash
-
 Setup the dotfiles:
 
     ~/Projects/dotfiles/bootstrap.sh
+
+For zsh (macOS default):
+
+    echo 'source ~/Projects/dotfiles/dotfiles/zshrc' >> ~/.zshrc
+
+For bash:
+
+    echo 'source ~/Projects/dotfiles/dotfiles/bashrc' >> ~/.bash_profile
 
 Open a new Terminal
 
@@ -48,7 +61,7 @@ Check out the new apps you have installed:
 
     find ~/Applications -cmin -60
 
-Try [one of the cool aliases](https://github.com/burin/dotfiles/blob/master/dotfiles/bash/updaters):
+Try [one of the cool aliases](https://github.com/burin/dotfiles/blob/master/dotfiles/zsh/updaters):
 
     update
 

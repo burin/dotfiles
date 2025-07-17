@@ -1,0 +1,41 @@
+# Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+function update() {
+  echo 'OS X's system software update tool will ask for your password...'
+  sudo softwareupdate -i -a
+
+  update_brew
+  update_nvm
+  update_npm
+  update_gems
+
+  printf '\nFinished updating.\n'
+  printf 'Remember to scan the install logs ^^^ for warnings and post-update instructions.\n'
+}
+
+function update_brew() {
+  brew update # Run brew update twice because that's what Homebrew says to do:
+  brew update # https://github.com/Homebrew/brew/blob/master/docs/README.md#troubleshooting
+  brew cleanup
+  brew doctor
+  brew upgrade
+  brew cleanup
+  brew doctor
+}
+
+function update_nvm() {
+  echo 'Updating NVM'
+
+  echo 'Getting latest version of NVM'
+  latest=$(curl --silent https://github.com/creationix/nvm/releases/latest --stderr - | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")
+
+  echo 'Re-installing NVM'
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v$latest/install.sh | PROFILE=$HOME/Projects/dotfiles/dotfiles/zsh/env zsh
+}
+
+function update_npm() {
+  echo 'Updating NPM'
+  npm install -g npm # Update NPM
+
+  echo 'Updating all globally installed packages'
+  npm update -g
+}
