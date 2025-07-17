@@ -24,6 +24,8 @@ brew 'tree'
 brew 'wget'
 brew 'tmux'
 brew 'neovim'
+brew 'ripgrep'
+brew 'zoxide'
 
 # Homebrew Cask
 # http://caskroom.io
