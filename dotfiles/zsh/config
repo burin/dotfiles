@@ -3,7 +3,7 @@
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
   autoload -Uz compinit
-  compinit
+  compinit -u
 fi
 
 # Initialize zoxide (smarter cd command)
@@ -12,7 +12,7 @@ if command -v zoxide &> /dev/null; then
 fi
 
 # Enable case-insensitive tab completion
-autoload -U compinit && compinit
+autoload -U compinit && compinit -u
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # History settings

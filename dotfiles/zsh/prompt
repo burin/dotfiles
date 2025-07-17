@@ -24,16 +24,16 @@ autoload -U colors && colors
 # https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
 # Using specific color codes to match bash prompt
 BOLD="%B"
-RESET="%{$reset_color%}%b"
-SOLAR_YELLOW="%{\033[38;5;136m%}"
-SOLAR_ORANGE="%{\033[38;5;166m%}"
-SOLAR_RED="%{\033[38;5;124m%}"
-SOLAR_MAGENTA="%{\033[38;5;125m%}"
-SOLAR_VIOLET="%{\033[38;5;61m%}"
-SOLAR_BLUE="%{\033[38;5;33m%}"
-SOLAR_CYAN="%{\033[38;5;37m%}"
-SOLAR_GREEN="%{\033[38;5;64m%}"
-SOLAR_WHITE="%{\033[38;5;254m%}"
+RESET="%{$reset_color%}"
+SOLAR_YELLOW="%F{136}"
+SOLAR_ORANGE="%F{166}"
+SOLAR_RED="%F{124}"
+SOLAR_MAGENTA="%F{125}"
+SOLAR_VIOLET="%F{61}"
+SOLAR_BLUE="%F{33}"
+SOLAR_CYAN="%F{37}"
+SOLAR_GREEN="%F{64}"
+SOLAR_WHITE="%F{254}"
 
 style_user="$RESET$SOLAR_ORANGE"
 style_host="$RESET$SOLAR_YELLOW"
@@ -61,28 +61,32 @@ zstyle ':vcs_info:*' enable git
 function prompt_git() {
     local branch
     branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-    [[ $? != 0 ]] && return;
+    if [[ $? -ne 0 ]]; then
+        return
+    fi
     
-    local status flags output
-    status="$(git status --porcelain 2>/dev/null)"
+    local git_status flags output
+    git_status="$(git status --porcelain 2>/dev/null)"
     
     flags=""
-    if [[ -n "$(echo "$status" | grep '^[MADRC]')" ]]; then
+    if [[ -n "$(echo "$git_status" | grep '^[MADRC]')" ]]; then
         flags+="+"
     fi
-    if [[ -n "$(echo "$status" | grep '^.[MD]')" ]]; then
+    if [[ -n "$(echo "$git_status" | grep '^.[MD]')" ]]; then
         flags+="!"
     fi
-    if [[ -n "$(echo "$status" | grep '^??')" ]]; then
+    if [[ -n "$(echo "$git_status" | grep '^??')" ]]; then
         flags+="?"
     fi
     
-    output="$branch"
+    output="${branch}"
     if [[ -n "$flags" ]]; then
-        output="$output[$flags]"
+        output="${output}[${flags}]"
     fi
-    echo "$style_chars on $style_branch$output"
+    echo -n " on %F{37}${output}%F{254}"
 }
 
 # Build the prompt
-PROMPT=$'\n$style_user%n$style_chars@$style_host%m$style_chars: $style_path%~$(prompt_git)\n$style_chars$ $RESET'
+PROMPT=$'
+${style_user}%n${style_chars}@${style_host}%m${style_chars}: ${style_path}%~${style_chars}$(prompt_git)
+${style_chars}$ ${RESET}'
