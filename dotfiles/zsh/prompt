@@ -22,17 +22,18 @@ autoload -U colors && colors
 # Base styles and color palette
 # Solarized colors
 # https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
-BOLD="%{$fg_bold[white]%}"
-RESET="%{$reset_color%}"
-SOLAR_YELLOW="%{$fg[yellow]%}"
-SOLAR_ORANGE="%{$fg[red]%}"
-SOLAR_RED="%{$fg_bold[red]%}"
-SOLAR_MAGENTA="%{$fg[magenta]%}"
-SOLAR_VIOLET="%{$fg[blue]%}"
-SOLAR_BLUE="%{$fg_bold[blue]%}"
-SOLAR_CYAN="%{$fg[cyan]%}"
-SOLAR_GREEN="%{$fg[green]%}"
-SOLAR_WHITE="%{$fg[white]%}"
+# Using specific color codes to match bash prompt
+BOLD="%B"
+RESET="%{$reset_color%}%b"
+SOLAR_YELLOW="%{\033[38;5;136m%}"
+SOLAR_ORANGE="%{\033[38;5;166m%}"
+SOLAR_RED="%{\033[38;5;124m%}"
+SOLAR_MAGENTA="%{\033[38;5;125m%}"
+SOLAR_VIOLET="%{\033[38;5;61m%}"
+SOLAR_BLUE="%{\033[38;5;33m%}"
+SOLAR_CYAN="%{\033[38;5;37m%}"
+SOLAR_GREEN="%{\033[38;5;64m%}"
+SOLAR_WHITE="%{\033[38;5;254m%}"
 
 style_user="$RESET$SOLAR_ORANGE"
 style_host="$RESET$SOLAR_YELLOW"
@@ -84,6 +85,4 @@ function prompt_git() {
 }
 
 # Build the prompt
-PROMPT='
-$style_user%n$style_chars@$style_host%m$style_chars: $style_path%~$(prompt_git)
-$style_chars$ $RESET'
+PROMPT=$'\n$style_user%n$style_chars@$style_host%m$style_chars: $style_path%~$(prompt_git)\n$style_chars$ $RESET'
