@@ -1,8 +1,9 @@
 # Easier navigation
 alias ..="cd .."
 
-# Directory listing
-alias la="ls -Glah"
+# Directory listing - using eza instead of ls
+alias ls='eza --classify=auto --color --group-directories-first --sort=extension -A'
+alias la='eza --classify=auto --color --group-directories-first --sort=extension -a -l --octal-permissions --no-permissions'
 alias lsd='ls -l | grep "^d"'
 
 # Neovim

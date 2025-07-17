@@ -26,6 +26,7 @@ brew 'tmux'
 brew 'neovim'
 brew 'ripgrep'
 brew 'zoxide'
+brew 'eza'
 
 # Homebrew Cask
 # http://caskroom.io
